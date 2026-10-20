@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bobby Greenan - Timetable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 5px;
+            color: #1a252f;
+        }
+
+        .student-name {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 12px 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .period-label {
+            background-color: #ecf0f1;
+            font-weight: bold;
+            color: #2c3e50;
+            width: 8%;
+        }
+
+        .subject {
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            display: block;
+        }
+
+        .teacher {
+            font-size: 0.82rem;
+            color: #666;
+            margin-top: 3px;
+            display: block;
+        }
+
+        .room {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 2px;
+            display: block;
+        }
+
+        .break-row {
+            background-color: #e8f4f8;
+            font-weight: bold;
+            color: #2980b9;
+            font-size: 0.88rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .free-slot {
+            background-color: #fbfbfb;
+            color: #aaa;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>School Timetable</h1>
+    <div class="student-name">Bobby Greenan</div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Period</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Slot 1 -->
+            <tr>
+                <td class="period-label">1</td>
+                <td>
+                    <span class="subject">Registration / Meditation</span>
+                </td>
+                <td>
+                    <span class="subject">Pastoral Care</span>
+                </td>
+                <td class="free-slot">—</td>
+                <td>
+                    <span class="subject">Pastoral Care</span>
+                </td>
+                <td>
+                    <span class="subject">Pastoral Care</span>
+                </td>
+            </tr>
+
+            <!-- Slot 2 -->
+            <tr>
+                <td class="period-label">2</td>
+                <td>
+                    <span class="subject">Religious Education</span>
+                    <span class="teacher">Tommy O'Hora</span>
+                    <span class="room">Room 42</span>
+                </td>
+                <td>
+                    <span class="subject">Mathematics</span>
+                    <span class="teacher">Margaret McDonnell</span>
+                    <span class="room">Room 36</span>
+                </td>
+                <td class="free-slot">—</td>
+                <td>
+                    <span class="subject">English</span>
+                    <span class="teacher">Una Maguire</span>
+                    <span class="room">Room 25</span>
+                </td>
+                <td>
+                    <span class="subject">Physics</span>
+                    <span class="teacher">Andrew Bates</span>
+                    <span class="room">Room 18</span>
+                </td>
+            </tr>
+
+            <!-- Slot 3 -->
+            <tr>
+                <td class="period-label">3</td>
+                <td>
+                    <span class="subject">Economics</span>
+                    <span class="teacher">Toni Campbell</span>
+                    <span class="room">Room 31</span>
+                </td>
+                <td>
+                    <span class="subject">Economics</span>
+                    <span class="teacher">Toni Campbell</span>
+                    <span class="room">Room 31</span>
+                </td>
+                <td>
+                    <span class="subject">Irish</span>
+                    <span class="teacher">Jennifer Ní Mhuirí</span>
+                    <span class="room">Room 38</span>
+                </td>
+                <td>
+                    <span class="subject">Design &amp; Comm. Graphics</span>
+                    <span class="teacher">Fergus Tighe</span>
+                    <span class="room">Room 6</span>
+                </td>
+                <td>
+                    <span class="subject">Design &amp; Comm. Graphics</span>
+                    <span class="teacher">Fergus Tighe</span>
+                    <span class="room">Room 6</span>
+                </td>
+            </tr>
+
+            <!-- Small Break -->
+            <tr class="break-row">
+                <td class="period-label">Break</td>
+                <td colspan="5">Small Break (~15 mins)</td>
+            </tr>
+
+            <!-- Slot 4 -->
+            <tr>
+                <td class="period-label">4</td>
+                <td>
+                    <span class="subject">French</span>
+                    <span class="teacher">Lorraine Owens</span>
+                    <span class="room">Room 40</span>
+                </td>
+                <td>
+                    <span class="subject">French</span>
+                    <span class="teacher">Lorraine Owens</span>
+                    <span class="room">Room 40</span>
+                </td>
+                <td>
+                    <span class="subject">Design &amp; Comm. Graphics</span>
+                    <span class="teacher">Fergus Tighe</span>
+                    <span class="room">Room 6</span>
+                </td>
+                <td>
+                    <span class="subject">Irish</span>
+                    <span class="teacher">Jennifer Ní Mhuirí</span>
+                    <span class="room">Room 38</span>
+                </td>
+                <td>
+                    <span class="subject">Physical Education</span>
+                    <span class="teacher">Doireann Mac Glinchey</span>
+                    <span class="room">Gym 1</span>
+                </td>
+            </tr>
+
+            <!-- Slot 5 -->
+            <tr>
+                <td class="period-label">5</td>
+                <td>
+                    <span class="subject">English</span>
+                    <span class="teacher">Una Maguire</span>
+                    <span class="room">Room 25</span>
+                </td>
+                <td>
+                    <span class="subject">Physics</span>
+                    <span class="teacher">Andrew Bates</span>
+                    <span class="room">Room 18</span>
+                </td>
+                <td>
+                    <span class="subject">SPHE</span>
+                    <span class="teacher">Toni Campbell</span>
+                    <span class="room">Room 22</span>
+                </td>
+                <td>
+                    <span class="subject">French</span>
+                    <span class="teacher">Lorraine Owens</span>
+                    <span class="room">Room 40</span>
+                </td>
+                <td>
+                    <span class="subject">Economics</span>
+                    <span class="teacher">Toni Campbell</span>
+                    <span class="room">Room 31</span>
+                </td>
+            </tr>
+
+            <!-- Lunch Break -->
+            <tr class="break-row">
+                <td class="period-label">Lunch</td>
+                <td colspan="5">Lunch Break (~45 mins)</td>
+            </tr>
+
+            <!-- Slot 6 -->
+            <tr>
+                <td class="period-label">6</td>
+                <td>
+                    <span class="subject">Irish</span>
+                    <span class="teacher">Jennifer Ní Mhuirí</span>
+                    <span class="room">Room 38</span>
+                </td>
+                <td>
+                    <span class="subject">Design &amp; Comm. Graphics</span>
+                    <span class="teacher">Fergus Tighe</span>
+                    <span class="room">Room 6</span>
+                </td>
+                <td>
+                    <span class="subject">Mathematics</span>
+                    <span class="teacher">Margaret McDonnell</span>
+                    <span class="room">Room 36</span>
+                </td>
+                <td>
+                    <span class="subject">Economics</span>
+                    <span class="teacher">Toni Campbell</span>
+                    <span class="room">Room 31</span>
+                </td>
+                <td>
+                    <span class="subject">Mathematics</span>
+                    <span class="teacher">Margaret McDonnell</span>
+                    <span class="room">Room 36</span>
+                </td>
+            </tr>
+
+            <!-- Slot 7 -->
+            <tr>
+                <td class="period-label">7</td>
+                <td>
+                    <span class="subject">Physics</span>
+                    <span class="teacher">Andrew Bates</span>
+                    <span class="room">Room 18</span>
+                </td>
+                <td>
+                    <span class="subject">English</span>
+                    <span class="teacher">Una Maguire</span>
+                    <span class="room">Room 25</span>
+                </td>
+                <td>
+                    <span class="subject">Religious Education</span>
+                    <span class="teacher">Tommy O'Hora</span>
+                    <span class="room">Room 28</span>
+                </td>
+                <td>
+                    <span class="subject">Applied Mathematics</span>
+                    <span class="teacher">Andrew Bates</span>
+                    <span class="room">Room 24</span>
+                </td>
+                <td class="free-slot">—</td>
+            </tr>
+
+            <!-- Slot 8 -->
+            <tr>
+                <td class="period-label">8</td>
+                <td class="free-slot">—</td>
+                <td class="free-slot">—</td>
+                <td>
+                    <span class="subject">Physics</span>
+                    <span class="teacher">Andrew Bates</span>
+                    <span class="room">Room 18</span>
+                </td>
+                <td class="free-slot">—</td>
+                <td class="free-slot">—</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
