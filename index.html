@@ -4,332 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bobby Greenan - Timetable</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-            background-color: #f8f9fa;
-            color: #333;
+            font-family: 'Inter', sans-serif;
         }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 5px;
-            color: #1a252f;
-        }
-
-        .student-name {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 25px;
-            font-weight: bold;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        th, td {
-            border: 1px solid #e0e0e0;
-            padding: 12px 10px;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        th {
-            background-color: #2c3e50;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .period-label {
-            background-color: #ecf0f1;
-            font-weight: bold;
-            color: #2c3e50;
-            width: 8%;
-        }
-
-        .subject {
-            font-weight: bold;
-            font-size: 0.95rem;
-            color: #2c3e50;
-            display: block;
-        }
-
-        .teacher {
-            font-size: 0.82rem;
-            color: #666;
-            margin-top: 3px;
-            display: block;
-        }
-
-        .room {
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: #e67e22;
-            margin-top: 2px;
-            display: block;
-        }
-
-        .break-row {
-            background-color: #e8f4f8;
-            font-weight: bold;
-            color: #2980b9;
-            font-size: 0.88rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .free-slot {
-            background-color: #fbfbfb;
-            color: #aaa;
-            font-style: italic;
+        @media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-border {
+                border-color: #cbd5e1 !important;
+            }
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 p-4 sm:p-8 min-h-screen">
 
-    <h1>School Timetable</h1>
-    <div class="student-name">Bobby Greenan</div>
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200 pb-4 gap-4">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">School Timetable</h1>
+                <p class="text-slate-500 font-semibold text-lg mt-0.5">Bobby Greenan</p>
+            </div>
+            <button onclick="window.print()" class="no-print self-start sm:self-auto inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm px-4 py-2 rounded-lg transition-colors shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                </svg>
+                Print Timetable
+            </button>
+        </header>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Period</th>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Slot 1 -->
-            <tr>
-                <td class="period-label">1</td>
-                <td>
-                    <span class="subject">Registration / Meditation</span>
-                </td>
-                <td>
-                    <span class="subject">Pastoral Care</span>
-                </td>
-                <td class="free-slot">—</td>
-                <td>
-                    <span class="subject">Pastoral Care</span>
-                </td>
-                <td>
-                    <span class="subject">Pastoral Care</span>
-                </td>
-            </tr>
+        <!-- Timetable Container -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden print-border">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[640px]">
+                    <thead>
+                        <tr class="bg-slate-100 border-b border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-600">
+                            <th class="py-3.5 px-4 w-1/5 border-r border-slate-200 last:border-r-0">Monday</th>
+                            <th class="py-3.5 px-4 w-1/5 border-r border-slate-200 last:border-r-0">Tuesday</th>
+                            <th class="py-3.5 px-4 w-1/5 border-r border-slate-200 last:border-r-0">Wednesday</th>
+                            <th class="py-3.5 px-4 w-1/5 border-r border-slate-200 last:border-r-0">Thursday</th>
+                            <th class="py-3.5 px-4 w-1/5 border-r border-slate-200 last:border-r-0">Friday</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-sm">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Reg</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 22</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Reg</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 22</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0 text-slate-300">—</td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Reg</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 22</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Reg</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 22</div>
+                            </td>
+                        </tr>
 
-            <!-- Slot 2 -->
-            <tr>
-                <td class="period-label">2</td>
-                <td>
-                    <span class="subject">Religious Education</span>
-                    <span class="teacher">Tommy O'Hora</span>
-                    <span class="room">Room 42</span>
-                </td>
-                <td>
-                    <span class="subject">Mathematics</span>
-                    <span class="teacher">Margaret McDonnell</span>
-                    <span class="room">Room 36</span>
-                </td>
-                <td class="free-slot">—</td>
-                <td>
-                    <span class="subject">English</span>
-                    <span class="teacher">Una Maguire</span>
-                    <span class="room">Room 25</span>
-                </td>
-                <td>
-                    <span class="subject">Physics</span>
-                    <span class="teacher">Andrew Bates</span>
-                    <span class="room">Room 18</span>
-                </td>
-            </tr>
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Meditation</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 42</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Mathematics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 36</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Irish</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 38</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">English</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 25</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Physics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 18</div>
+                            </td>
+                        </tr>
 
-            <!-- Slot 3 -->
-            <tr>
-                <td class="period-label">3</td>
-                <td>
-                    <span class="subject">Economics</span>
-                    <span class="teacher">Toni Campbell</span>
-                    <span class="room">Room 31</span>
-                </td>
-                <td>
-                    <span class="subject">Economics</span>
-                    <span class="teacher">Toni Campbell</span>
-                    <span class="room">Room 31</span>
-                </td>
-                <td>
-                    <span class="subject">Irish</span>
-                    <span class="teacher">Jennifer Ní Mhuirí</span>
-                    <span class="room">Room 38</span>
-                </td>
-                <td>
-                    <span class="subject">Design &amp; Comm. Graphics</span>
-                    <span class="teacher">Fergus Tighe</span>
-                    <span class="room">Room 6</span>
-                </td>
-                <td>
-                    <span class="subject">Design &amp; Comm. Graphics</span>
-                    <span class="teacher">Fergus Tighe</span>
-                    <span class="room">Room 6</span>
-                </td>
-            </tr>
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Economics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 31</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Economics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 31</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Design &amp; Communication Graphics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 6</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Design &amp; Communication Graphics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 6</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Design &amp; Communication Graphics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 6</div>
+                            </td>
+                        </tr>
 
-            <!-- Small Break -->
-            <tr class="break-row">
-                <td class="period-label">Break</td>
-                <td colspan="5">Small Break (~15 mins)</td>
-            </tr>
+                        <!-- Row 4 -->
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">French</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 40</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">French</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 40</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">SPHE</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 22</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Irish</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 38</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Physical Education</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Gym 1</div>
+                            </td>
+                        </tr>
 
-            <!-- Slot 4 -->
-            <tr>
-                <td class="period-label">4</td>
-                <td>
-                    <span class="subject">French</span>
-                    <span class="teacher">Lorraine Owens</span>
-                    <span class="room">Room 40</span>
-                </td>
-                <td>
-                    <span class="subject">French</span>
-                    <span class="teacher">Lorraine Owens</span>
-                    <span class="room">Room 40</span>
-                </td>
-                <td>
-                    <span class="subject">Design &amp; Comm. Graphics</span>
-                    <span class="teacher">Fergus Tighe</span>
-                    <span class="room">Room 6</span>
-                </td>
-                <td>
-                    <span class="subject">Irish</span>
-                    <span class="teacher">Jennifer Ní Mhuirí</span>
-                    <span class="room">Room 38</span>
-                </td>
-                <td>
-                    <span class="subject">Physical Education</span>
-                    <span class="teacher">Doireann Mac Glinchey</span>
-                    <span class="room">Gym 1</span>
-                </td>
-            </tr>
+                        <!-- Row 5 -->
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">English</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 25</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Physics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 18</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Mathematics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 36</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">French</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 40</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Economics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 31</div>
+                            </td>
+                        </tr>
 
-            <!-- Slot 5 -->
-            <tr>
-                <td class="period-label">5</td>
-                <td>
-                    <span class="subject">English</span>
-                    <span class="teacher">Una Maguire</span>
-                    <span class="room">Room 25</span>
-                </td>
-                <td>
-                    <span class="subject">Physics</span>
-                    <span class="teacher">Andrew Bates</span>
-                    <span class="room">Room 18</span>
-                </td>
-                <td>
-                    <span class="subject">SPHE</span>
-                    <span class="teacher">Toni Campbell</span>
-                    <span class="room">Room 22</span>
-                </td>
-                <td>
-                    <span class="subject">French</span>
-                    <span class="teacher">Lorraine Owens</span>
-                    <span class="room">Room 40</span>
-                </td>
-                <td>
-                    <span class="subject">Economics</span>
-                    <span class="teacher">Toni Campbell</span>
-                    <span class="room">Room 31</span>
-                </td>
-            </tr>
+                        <!-- Row 6 -->
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Irish</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 38</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Design &amp; Communication Graphics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 6</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Religious Education</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 28</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Economics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 31</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Mathematics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 36</div>
+                            </td>
+                        </tr>
 
-            <!-- Lunch Break -->
-            <tr class="break-row">
-                <td class="period-label">Lunch</td>
-                <td colspan="5">Lunch Break (~45 mins)</td>
-            </tr>
+                        <!-- Row 7 -->
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Physics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 18</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">English</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 25</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Physics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 18</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Applied Mathematics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 24</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0 text-slate-300">—</td>
+                        </tr>
 
-            <!-- Slot 6 -->
-            <tr>
-                <td class="period-label">6</td>
-                <td>
-                    <span class="subject">Irish</span>
-                    <span class="teacher">Jennifer Ní Mhuirí</span>
-                    <span class="room">Room 38</span>
-                </td>
-                <td>
-                    <span class="subject">Design &amp; Comm. Graphics</span>
-                    <span class="teacher">Fergus Tighe</span>
-                    <span class="room">Room 6</span>
-                </td>
-                <td>
-                    <span class="subject">Mathematics</span>
-                    <span class="teacher">Margaret McDonnell</span>
-                    <span class="room">Room 36</span>
-                </td>
-                <td>
-                    <span class="subject">Economics</span>
-                    <span class="teacher">Toni Campbell</span>
-                    <span class="room">Room 31</span>
-                </td>
-                <td>
-                    <span class="subject">Mathematics</span>
-                    <span class="teacher">Margaret McDonnell</span>
-                    <span class="room">Room 36</span>
-                </td>
-            </tr>
-
-            <!-- Slot 7 -->
-            <tr>
-                <td class="period-label">7</td>
-                <td>
-                    <span class="subject">Physics</span>
-                    <span class="teacher">Andrew Bates</span>
-                    <span class="room">Room 18</span>
-                </td>
-                <td>
-                    <span class="subject">English</span>
-                    <span class="teacher">Una Maguire</span>
-                    <span class="room">Room 25</span>
-                </td>
-                <td>
-                    <span class="subject">Religious Education</span>
-                    <span class="teacher">Tommy O'Hora</span>
-                    <span class="room">Room 28</span>
-                </td>
-                <td>
-                    <span class="subject">Applied Mathematics</span>
-                    <span class="teacher">Andrew Bates</span>
-                    <span class="room">Room 24</span>
-                </td>
-                <td class="free-slot">—</td>
-            </tr>
-
-            <!-- Slot 8 -->
-            <tr>
-                <td class="period-label">8</td>
-                <td class="free-slot">—</td>
-                <td class="free-slot">—</td>
-                <td>
-                    <span class="subject">Physics</span>
-                    <span class="teacher">Andrew Bates</span>
-                    <span class="room">Room 18</span>
-                </td>
-                <td class="free-slot">—</td>
-                <td class="free-slot">—</td>
-            </tr>
-        </tbody>
-    </table>
+                        <!-- Row 8 -->
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0 text-slate-300">—</td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0 text-slate-300">—</td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0">
+                                <div class="font-semibold text-slate-900">Applied Mathematics</div>
+                                <div class="text-xs text-indigo-600 font-medium mt-0.5">Room 24</div>
+                            </td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0 text-slate-300">—</td>
+                            <td class="py-3.5 px-4 align-top border-r border-slate-200 last:border-r-0 text-slate-300">—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
