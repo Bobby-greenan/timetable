@@ -13,14 +13,21 @@
             background-color: #ffffff;
         }
 
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
         h1 {
             font-size: 22px;
-            margin-bottom: 15px;
+            margin: 0;
         }
 
         .timetable-navigation {
             display: inline-block;
-            margin-bottom: 15px;
             padding: 10px 14px;
             border: 1px solid #000000;
             border-radius: 4px;
@@ -59,8 +66,10 @@
 </head>
 <body>
 
-    <a class="timetable-navigation" href="exam.html">Exam Timetable</a>
-    <h1>Bobby's Timetable</h1>
+    <div class="page-header">
+        <h1>Bobby's Timetable</h1>
+        <a class="timetable-navigation" href="exam.html">Exam Timetable</a>
+    </div>
 
     <table>
         <thead>
