@@ -20,6 +20,7 @@
             justify-content: space-between;
             gap: 12px;
             margin-bottom: 15px;
+            flex-wrap: wrap;
         }
 
         h1 {
@@ -45,15 +46,17 @@
 
         table {
             border-collapse: collapse;
-            table-layout: fixed;
             width: 100%;
+            max-width: 1200px;
+            table-layout: fixed;
         }
 
         th, td {
             border: 1px solid #000000;
             padding: 8px;
-            text-align: centre;
+            text-align: center;
             vertical-align: middle;
+            word-wrap: break-word;
         }
 
         th {
@@ -63,6 +66,16 @@
         .room {
             font-size: 13px;
             color: #444444;
+        }
+
+        @media (max-width: 700px) {
+            .table-wrapper {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 700px;
+            }
         }
     </style>
 </head>
