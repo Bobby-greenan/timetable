@@ -3,158 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bobby's Exam Timetable</title>
+    <meta name="description" content="St Colmcille’s Community School 5th Year November Exams 2026 timetable.">
+    <title>5th Year November Exams 2026 | St Colmcille’s Community School</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
             margin: 20px;
-            color: #000000;
-            background-color: #ffffff;
+            color: #172033;
+            background: #f5f7fb;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .page-header {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            gap: 12px;
-            margin-bottom: 15px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .school-name {
+            margin: 0 0 6px;
+            color: #4b5568;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         h1 {
-            font-size: 22px;
             margin: 0;
+            font-size: clamp(22px, 4vw, 30px);
         }
 
         .timetable-navigation {
             display: inline-block;
             padding: 10px 14px;
-            border: 1px solid #000000;
-            border-radius: 4px;
-            background-color: #f2f2f2;
-            color: #000000;
+            border: 1px solid #b8c2d3;
+            border-radius: 6px;
+            background: #fff;
+            color: #172033;
             font-weight: bold;
             text-decoration: none;
         }
 
         .timetable-navigation:hover,
         .timetable-navigation:focus {
-            background-color: #e0e0e0;
+            background: #e9eef7;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid #d5dce8;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgb(23 32 51 / 6%);
         }
 
         table {
-            border-collapse: collapse;
             width: 100%;
+            min-width: 760px;
+            border-collapse: collapse;
         }
 
-        th, td {
-            border: 1px solid #000000;
-            padding: 8px;
-            text-align: centre;
+        caption {
+            padding: 14px;
+            color: #4b5568;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        th,
+        td {
+            padding: 13px 12px;
+            border: 1px solid #d5dce8;
+            text-align: left;
             vertical-align: middle;
         }
 
-        th {
-            background-color: #ffffff;
+        thead th {
+            background: #e9eef7;
+        }
+
+        tbody th {
+            width: 150px;
+            background: #f7f9fc;
+            white-space: nowrap;
         }
 
         .room {
+            display: inline-block;
+            margin-top: 4px;
+            color: #586477;
             font-size: 13px;
-            color: #444444;
+        }
+
+        .empty {
+            color: #8a94a5;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                margin: 14px;
+            }
         }
     </style>
 </head>
 <body>
+    <main>
+        <header class="page-header">
+            <div>
+                <p class="school-name">St Colmcille’s Community School</p>
+                <h1>5th Year November Exams 2026</h1>
+            </div>
+            <a class="timetable-navigation" href="index.html">Standard Timetable</a>
+        </header>
 
-    <div class="page-header">
-        <h1>Bobby's Exam Timetable</h1>
-        <a class="timetable-navigation" href="index.html">Standard Timetable</a>
-    </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Row 1 -->
-            <tr>
-                <td>Reg<br><span class="room">Room 22</span></td>
-                <td>Reg<br><span class="room">Room 22</span></td>
-                <td>—</td>
-                <td>Reg<br><span class="room">Room 22</span></td>
-                <td>Reg<br><span class="room">Room 22</span></td>
-            </tr>
-
-            <!-- Row 2 -->
-            <tr>
-                <td>Meditation<br><span class="room">Room 42</span></td>
-                <td>Maths<br><span class="room">Room 36</span></td>
-                <td>Irish<br><span class="room">Room 38</span></td>
-                <td>English<br><span class="room">Room 25</span></td>
-                <td>Physics<br><span class="room">Room 18</span></td>
-            </tr>
-
-            <!-- Row 3 -->
-            <tr>
-                <td>Economics<br><span class="room">Room 31</span></td>
-                <td>Economics<br><span class="room">Room 31</span></td>
-                <td>DCG<br><span class="room">Room 6</span></td>
-                <td>DCG<br><span class="room">Room 6</span></td>
-                <td>DCG<br><span class="room">Room 6</span></td>
-            </tr>
-
-            <!-- Row 4 -->
-            <tr>
-                <td>French<br><span class="room">Room 40</span></td>
-                <td>French<br><span class="room">Room 40</span></td>
-                <td>SPHE<br><span class="room">Room 22</span></td>
-                <td>Irish<br><span class="room">Room 38</span></td>
-                <td>PE<br><span class="room">Gym 1</span></td>
-            </tr>
-
-            <!-- Row 5 -->
-            <tr>
-                <td>English<br><span class="room">Room 25</span></td>
-                <td>Physics<br><span class="room">Room 18</span></td>
-                <td>Maths<br><span class="room">Room 36</span></td>
-                <td>French<br><span class="room">Room 40</span></td>
-                <td>Economics<br><span class="room">Room 31</span></td>
-            </tr>
-
-            <!-- Row 6 -->
-            <tr>
-                <td>Irish<br><span class="room">Room 38</span></td>
-                <td>DCG<br><span class="room">Room 6</span></td>
-                <td>Religion<br><span class="room">Room 28</span></td>
-                <td>Economics<br><span class="room">Room 31</span></td>
-                <td>Maths<br><span class="room">Room 36</span></td>
-            </tr>
-
-            <!-- Row 7 -->
-            <tr>
-                <td>Physics<br><span class="room">Room 18</span></td>
-                <td>English<br><span class="room">Room 25</span></td>
-                <td>Physics<br><span class="room">Room 18</span></td>
-                <td>Applied Maths<br><span class="room">Room 24</span></td>
-                <td>—</td>
-            </tr>
-
-            <!-- Row 8 -->
-            <tr>
-                <td>—</td>
-                <td>—</td>
-                <td>Applied Maths<br><span class="room">Room 24</span></td>
-                <td>—</td>
-                <td>—</td>
-            </tr>
-        </tbody>
-    </table>
-
+        <div class="table-wrapper">
+            <table>
+                <caption>Exam timetable · Monday 9 November to Friday 13 November 2026</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Time</th>
+                        <th scope="col">Monday<br>9th Nov</th>
+                        <th scope="col">Tuesday<br>10th Nov</th>
+                        <th scope="col">Wednesday<br>11th Nov</th>
+                        <th scope="col">Thursday<br>12th Nov</th>
+                        <th scope="col">Friday<br>13th Nov</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">08:45–09:00</th>
+                        <td>Get settled for exams</td>
+                        <td class="empty">—</td>
+                        <td class="empty">—</td>
+                        <td class="empty">—</td>
+                        <td class="empty">—</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">09:00–11:00</th>
+                        <td>UMA<br><span class="room">Room 23</span></td>
+                        <td>Physics<br><span class="room">Room 24</span></td>
+                        <td>Economics<br><span class="room">Room 23</span></td>
+                        <td>Gaeilge<br><span class="room">Exam 09:15–10:45 · Room 21</span></td>
+                        <td>Maths<br><span class="room">Room 21</span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11:00–13:00</th>
+                        <td class="empty">—</td>
+                        <td>French<br><span class="room">Room 25</span></td>
+                        <td class="empty">—</td>
+                        <td class="empty">—</td>
+                        <td>DCG<br><span class="room">Room 23</span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">13:00–13:30</th>
+                        <td class="empty">—</td>
+                        <td class="empty">—</td>
+                        <td class="empty">—</td>
+                        <td class="empty">—</td>
+                        <td class="empty">—</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">13:30–15:30</th>
+                        <td class="empty">—</td>
+                        <td>Applied Maths<br><span class="room">Room 23</span></td>
+                        <td class="empty">—</td>
+                        <td class="empty">—</td>
+                        <td class="empty">—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
 </html>
